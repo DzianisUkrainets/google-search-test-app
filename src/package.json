@@ -1,0 +1,27 @@
+{
+	"name": "google-search-test-app",
+	"version": "0.0.1",
+	"description": "google search using keywords provided from client",
+	"repository": "https://github.com/DzianisUkrainets/google-search-test-app/",
+	"main": "servers/server.js",
+	"dependencies": {
+		"express": "*"
+	},
+	"devDependencies": {
+		"express": "*",
+		"gulp": "*",
+		"gulp-less": "*",
+		"gulp-minify-css": "*",
+		"gulp-concat-css": "*",
+		"gulp-uglify": "*",
+		"gulp-concat": "*",
+		"gulp-clean": "*"
+	},
+	"scripts": {
+		"build": "gulp cleanbuild & gulp build",
+		"start": "node ./servers/server.js",
+		"watch": "gulp watch --debug",
+		"dev": "npm start & npm run watch"
+	},
+	"author": "Dzianis Ukrainets"
+}
