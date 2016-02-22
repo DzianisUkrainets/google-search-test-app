@@ -5,7 +5,9 @@
   "repository": "https://github.com/DzianisUkrainets/google-search-test-app/",
   "main": "servers/server.js",
   "dependencies": {
-    "express": "^4.13.4"
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "request": "^2.69.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
