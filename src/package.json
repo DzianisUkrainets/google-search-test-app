@@ -1,27 +1,30 @@
 {
-	"name": "google-search-test-app",
-	"version": "0.0.1",
-	"description": "google search using keywords provided from client",
-	"repository": "https://github.com/DzianisUkrainets/google-search-test-app/",
-	"main": "servers/server.js",
-	"dependencies": {
-		"express": "*"
-	},
-	"devDependencies": {
-		"express": "*",
-		"gulp": "*",
-		"gulp-less": "*",
-		"gulp-minify-css": "*",
-		"gulp-concat-css": "*",
-		"gulp-uglify": "*",
-		"gulp-concat": "*",
-		"gulp-clean": "*"
-	},
-	"scripts": {
-		"build": "gulp cleanbuild & gulp build",
-		"start": "node ./servers/server.js",
-		"watch": "gulp watch --debug",
-		"dev": "npm start & npm run watch"
-	},
-	"author": "Dzianis Ukrainets"
+  "name": "google-search-test-app",
+  "version": "0.0.1",
+  "description": "google search using keywords provided from client",
+  "repository": "https://github.com/DzianisUkrainets/google-search-test-app/",
+  "main": "servers/server.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-if": "^2.0.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-less": "^3.0.5",
+    "gulp-sequence": "^0.4.5",
+    "gulp-uglify": "^1.5.2",
+    "gulp-util": "^3.0.7"
+  },
+  "scripts": {
+    "build": "gulp cleanbuild & gulp build",
+    "start": "node ./servers/server.js",
+    "dev": "gulp watch --dev"
+  },
+  "author": "Dzianis Ukrainets",
+  "license": "ISC"
 }

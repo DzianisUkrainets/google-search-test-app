@@ -1,37 +1,55 @@
 'use strict'
 
-var gulp = require('gulp');
-var minifyCSS = require('gulp-minify-css');
-var less = require('gulp-less');
-var path = require('path');
-var concatCss = require('gulp-concat-css');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var clean = require('gulp-clean');
+var gulp = require('gulp'),
+    less = require('gulp-less'),
+    path = require('path'),
+    concatCss = require('gulp-concat-css'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat'),
+    clean = require('gulp-clean'),
+    gulpif = require('gulp-if'),
+    util = require('gulp-util'),
+    seq = require('gulp-sequence'),
+    inject = require('gulp-inject'),
+    cssnano = require('gulp-cssnano');
 
-//var debug = util.env.debug,
+var dev = util.env.dev;
+
+var paths = {
+    sourceJs: './public/js/**/*.js',
+    sourceLess: './public/styles/**/*.less',
+    sourceHtml: './public/*.html',
+    destJs: 'build/js/**/*.js',
+    destCss: 'build/css/**/*.css',
+    destJsFolder: 'build/js',
+    destCssFolder: './build/css',
+    destFolder: 'build'
+}
 
 gulp.task('less', function () {
-  return gulp.src('./public/styles/**/*.less')
+  return gulp.src(paths.sourceLess)
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
-    .pipe(concatCss("styles.css"))
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('./build/css'));
+    .pipe(gulpif(!dev, concatCss("styles.min.css")))
+    .pipe(gulpif(!dev, cssnano()))
+    .pipe(gulp.dest(paths.destCssFolder));
 });
 
-
 gulp.task('js', function() {
-	return gulp.src('./public/js/**/*.js')
-    .pipe(uglify())
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('build/js'));
+	return gulp.src(paths.sourceJs)
+    .pipe(gulpif(!dev, uglify()))
+    .pipe(gulpif(!dev, concat('app.min.js')))
+    .pipe(gulp.dest(paths.destJsFolder));
 });
 
 gulp.task('html', function() {
-    return gulp.src(['./public/*.html'])
-        .pipe(gulp.dest('build'))
+    var target = gulp.src([paths.sourceHtml]);
+    var sources = gulp.src([paths.destJs, paths.destCss], {read: false}, {relative: true});
+
+    return target
+        .pipe(inject(sources, {ignorePath: paths.destFolder}))
+        .pipe(gulp.dest(paths.destFolder))
 });
 
 gulp.task('clean', function () {
@@ -39,6 +57,11 @@ gulp.task('clean', function () {
 		.pipe(clean());
 });
 
+gulp.task('watch', ['clean', 'build'], function() {
+    gulp.watch([paths.sourceJs], ['js']);
+    gulp.watch([paths.sourceLess], ['less']);
+    gulp.watch([paths.sourceHtml], ['html']);
+});
 
-gulp.task('build', ['less', 'js', 'html']);
+gulp.task('build', seq(['less', 'js', ],'html'));
 gulp.task('cleanbuild', ['clean']);

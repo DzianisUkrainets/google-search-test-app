@@ -2,12 +2,15 @@
 <html ng-app="searchApp">
 	<head>
 		<title>Google Search Test App</title>
-		<link rel="stylesheet" href="css/styles.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
+		<!-- inject:css -->
+		<!-- endinject -->
 	</head>
 	<body ng-controller="HomeController as home">
 		<h1 ng-bind="home.text"></h1>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
+		<!-- inject:js -->
+		<!-- endinject -->
 	</body>
 </html>
