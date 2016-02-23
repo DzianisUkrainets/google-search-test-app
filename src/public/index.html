@@ -13,13 +13,23 @@
 <header class="navbar navbar-fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="#">Google Search Test App</a>
-		<div class="navbar-form"><input type="text" value="" class="form-control search-input"></div>
+		<div class="navbar-form"><input type="text" value="" class="form-control search-input" ng-keyup="home.typeQuery($event)"></div>
 	</div>
 </header>
 <div class="container">
 	<div class="row">
+		<div class="search-item col-md-8" ng-repeat="item in home.data.items">
+			<h3>
+				<a ng-href="{{item.link}}" ng-bind="item.title" target="_blank"></a>
+			</h3>
+			<div>
+				<cite ng-bind-html="item.htmlFormattedUrl | trustAsHtml"></cite>
+				<span ng-bind-html="item.htmlSnippet| trustAsHtml"></span>
+			</div>
+		</div>
 	</div>
 	<hr>
+	<du-pagination ng-if="home.data.items" current-page="startPage" max="count" count="totalCount" on-select="home.selectPage(page)"></du-pagination>
 	<footer class="footer">
 		<p>© Dzianis Ukrainets, 2016</p>
 	</footer>

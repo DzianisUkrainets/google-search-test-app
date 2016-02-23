@@ -18,7 +18,7 @@ var dev = util.env.dev;
 var paths = {
     sourceJs: './public/js/**/*.js',
     sourceLess: './public/styles/**/*.less',
-    sourceHtml: './public/*.html',
+    sourceHtml: './public/**/*.html',
     destJs: 'build/js/**/*.js',
     destCss: 'build/css/**/*.css',
     destJsFolder: 'build/js',
