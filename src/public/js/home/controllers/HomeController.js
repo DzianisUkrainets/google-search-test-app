@@ -1,6 +1,6 @@
 "use strict"
 
-searchApp.controller('HomeController', ['searchService', '$timeout', '$scope' , function(searchService, $timeout) {
+searchApp.controller('HomeController', ['searchService', '$timeout', function(searchService, $timeout) {
 	var self = this;
 
 	self.search = function () {

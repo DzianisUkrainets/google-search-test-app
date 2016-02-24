@@ -10,7 +10,7 @@ searchApp.directive('duPagination', function() {
             count: '=',
             onSelect: '&'
         },
-        controller: function ($scope) {
+        controller: ['$scope', function ($scope) {
             $scope.middle = Math.floor($scope.max / 2);
 
             var self = this;
@@ -55,6 +55,6 @@ searchApp.directive('duPagination', function() {
                 }
                 return result;
             }
-        }
+        }]
     };
 })

@@ -17,6 +17,7 @@ var dev = util.env.dev;
 
 var paths = {
     sourceJs: './public/js/**/*.js',
+    ignoreSourceTest:'!./public/js/tests/**/*.js',
     sourceLess: './public/styles/**/*.less',
     sourceHtml: './public/**/*.html',
     destJs: 'build/js/**/*.js',
@@ -37,7 +38,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('js', function() {
-	return gulp.src(paths.sourceJs)
+	return gulp.src([paths.ignoreSourceTest, paths.sourceJs])
     .pipe(gulpif(!dev, uglify()))
     .pipe(gulpif(!dev, concat('app.min.js')))
     .pipe(gulp.dest(paths.destJsFolder));
