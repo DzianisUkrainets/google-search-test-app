@@ -11,12 +11,16 @@ searchApp.controller('HomeController', ['searchService', '$timeout', '$scope' , 
 			self.startPage = data.queries.request[0].startIndex;
 			self.totalCount = data.queries.request[0].totalResults;
 			self.count = data.queries.request[0].count;
+		}, function(errorData) {
+			alert(errorData.data);
 		});
 	};
 
 	self.selectPage = function(startPage) {
 		searchService.get({q: self.q, start: startPage}, function(data) {
 			self.data = data;
+		}, function(errorData) {
+			alert(errorData.data);
 		});
 	}
 

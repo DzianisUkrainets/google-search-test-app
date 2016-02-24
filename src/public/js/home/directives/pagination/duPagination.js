@@ -3,7 +3,7 @@
 searchApp.directive('duPagination', function() {
     return {
         restrict: 'E',
-        template: '<ul><li ng-repeat="page in calcPages()"><a href="#" ng-bind="page" ng-click="selectItem(page)" ng-class="{true: \'selected-page\'}[page == currentPage]"></a></li>',
+        template: '<ul class="pagination"><li ng-repeat="page in calcPages()"><a href="#" ng-bind="page" ng-click="selectItem(page)" ng-class="{true: \'selected-page\'}[page == currentPage]"></a></li>',
         scope: {
             currentPage: '=',
             max: '=',
