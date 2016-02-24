@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<hr>
-	<du-pagination ng-if="home.data.items" current-page="startPage" max="count" count="totalCount" on-select="home.selectPage(page)"></du-pagination>
+	<du-pagination ng-if="home.data.items" current-page="home.startPage" max="home.count" count="home.totalCount" on-select="home.selectPage(page)"></du-pagination>
 	<footer class="footer">
 		<p>© Dzianis Ukrainets, 2016</p>
 	</footer>

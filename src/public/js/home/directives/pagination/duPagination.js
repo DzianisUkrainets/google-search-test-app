@@ -1,3 +1,5 @@
+"use strict"
+
 searchApp.directive('duPagination', function() {
     return {
         restrict: 'E',
@@ -8,17 +10,16 @@ searchApp.directive('duPagination', function() {
             count: '=',
             onSelect: '&'
         },
-        link: function (scope, element, attrs) {
-
-        },
-        controller: function ($scope, $element, $attrs, $transclude) {
+        controller: function ($scope) {
             $scope.middle = Math.floor($scope.max / 2);
 
             var self = this;
 
             $scope.selectItem = function(index) {
                 $scope.currentPage = index;
-                $scope.onSelect({page: index});
+                if ($scope.onSelect) {
+                    $scope.onSelect({page: index});
+                }
             }
 
             $scope.calcPages = function () {
