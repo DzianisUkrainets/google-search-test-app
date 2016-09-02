@@ -1,3 +1,3 @@
-"use strict"
+"use strict";
 
 var searchApp = angular.module('searchApp', ['services']);

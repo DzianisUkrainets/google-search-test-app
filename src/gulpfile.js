@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var gulp = require('gulp'),
     less = require('gulp-less'),
@@ -25,7 +25,7 @@ var paths = {
     destJsFolder: 'build/js',
     destCssFolder: './build/css',
     destFolder: 'build'
-}
+};
 
 gulp.task('less', function () {
   return gulp.src(paths.sourceLess)
@@ -64,5 +64,5 @@ gulp.task('watch', ['clean', 'build'], function() {
     gulp.watch([paths.sourceHtml], ['html']);
 });
 
-gulp.task('build', seq(['less', 'js', ],'html'));
+gulp.task('build', seq(['less', 'js' ],'html'));
 gulp.task('cleanbuild', ['clean']);

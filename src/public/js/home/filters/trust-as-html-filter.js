@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 searchApp.filter('trustAsHtml', ['$sce', function($sce) {
     return function(val) {

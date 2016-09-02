@@ -9,8 +9,8 @@ describe('trust as html filter', function() {
     }));
 
     it('return correct html', function() {
-        var html = '<div>aaaa</div>';
+        var html = '<div><script type="javascript">alert("1")</script></div>';
         var trustAsHtml = $filter('trustAsHtml');
-        expect(trustAsHtml(html)).toEqual(html);
+        expect(trustAsHtml(html).toString()).toEqual(html);
     });
 });

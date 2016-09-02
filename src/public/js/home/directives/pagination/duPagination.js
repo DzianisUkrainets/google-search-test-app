@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 searchApp.directive('duPagination', function() {
     return {
@@ -20,7 +20,7 @@ searchApp.directive('duPagination', function() {
                 if ($scope.onSelect) {
                     $scope.onSelect({page: index});
                 }
-            }
+            };
 
             $scope.calcPages = function () {
                 var res = [];
@@ -57,4 +57,4 @@ searchApp.directive('duPagination', function() {
             }
         }]
     };
-})
+});

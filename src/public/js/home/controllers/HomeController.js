@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 searchApp.controller('HomeController', ['searchService', '$timeout', function(searchService, $timeout) {
 	var self = this;
@@ -22,7 +22,7 @@ searchApp.controller('HomeController', ['searchService', '$timeout', function(se
 		}, function(errorData) {
 			alert(errorData.data);
 		});
-	}
+	};
 
 	self.timeoutPromise = null;
 
